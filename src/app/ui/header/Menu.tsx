@@ -1,7 +1,8 @@
 import React from "react";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
-import MenuItem from "./MenuItem";
+import MenuItem from "@/app/ui/header/MenuItem";
+import DarkModeSwitch from "@/app/ui/header/DarkModeSwitch";
 
 export default function Menu() {
   const menuItems: Array<{
@@ -28,7 +29,8 @@ export default function Menu() {
           <MenuItem key={menuItem.title + menuItem.href} {...menuItem} />
         ))}
       </nav>
-      <div className=" flex items-center">
+      <div className=" flex items-center space-x-4">
+        <DarkModeSwitch />
         <p className="text-2xl">
           <span className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1">
             IMDB
