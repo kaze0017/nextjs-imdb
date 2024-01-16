@@ -6,17 +6,20 @@ export async function getMovies({
 }: {
   genre: "trending" | "top_rated";
 }) {
+  //   throw new Error("Failed to Delete Invoice");
+
   let url;
   genre === "trending"
     ? (url =
         API_URL + "/trending/all/week?api_key=" + API_KEY + "&language=en-US")
     : (url =
         API_URL + "/movie/top_rated?api_key=" + API_KEY + "&language=en-US");
-  const response = await fetch(url, {
-    next: { revalidate: 10000 },
-  });
-  if (!response.ok) {
-    throw new Error(response.statusText);
+  try {
+    const response = await fetch(url, {
+      next: { revalidate: 10000 },
+    });
+    return response.json();
+  } catch (error) {
+    throw new Error("Failed to Delete Invoice");
   }
-  return response.json();
 }
