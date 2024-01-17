@@ -7,13 +7,15 @@ export default async function Home({
 }: {
   searchParams?: {
     type?: "trending" | "top_rated" | undefined;
+    query?: string;
   };
 }) {
   let genre = searchParams?.type as "trending" | "top_rated" | undefined;
+  let query = searchParams?.query as string | undefined;
   return (
     <main>
       <Suspense fallback={<TableSkeleton />}>
-        <Table genre={genre} />
+        <Table genre={genre} query={query} />
       </Suspense>
     </main>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { PhotoIcon } from "@heroicons/react/24/outline";
 
 export default function Card({
   movie,
@@ -22,12 +23,17 @@ export default function Card({
       <Link href={`/movie/${movie.id}`}>
         <div className="flex-shrink-0">
           <Image
-            src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path || movie.poster_path}`}
+            src={
+              movie.backdrop_path || movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path || movie.poster_path}`
+                : "/noimage.svg" // replace with the actual path to your placeholder image
+            }
             width={500}
-            height={300}
+            height={250}
             style={{
               maxWidth: "100%",
               height: "auto",
+              maxHeight: "250px",
               objectPosition: "center",
             }}
             alt={movie.title}
@@ -42,18 +48,25 @@ export default function Card({
             <p className="text-sm font-medium text-amber-600 line-clamp-1">
               {movie.title || movie.name || "No title available"}
             </p>
-            <a href="#" className="block mt-2">
-              <p className="mt-3 text-base text-gray-500 dark:text-gray-400 line-clamp-2">
-                {movie.overview}
-              </p>
-            </a>
+            <p className="mt-3 text-base text-gray-500 dark:text-gray-400 line-clamp-2">
+              {movie.overview || (
+                <div>
+                  <p>Overview</p>
+                  Not Available
+                </div>
+              )}
+            </p>
           </div>
           <div className="mt-6 flex items-center">
             <div className="flex-shrink-0">
               <span className="sr-only">{movie.title}</span>
               <img
                 className="h-10 w-10 rounded-full"
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                src={
+                  movie.backdrop_path || movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+                    : "/noimage.svg" // replace with the actual path to your placeholder image
+                }
                 alt={movie.title}
               />
             </div>

@@ -10,7 +10,11 @@ export default async function page({ params }: { params?: { id?: string } }) {
     <div className="max-w-6xl mx-auto items-center content-center sm:p-2 6xl:p-0">
       <div className="grid grid-col-1 sm:grid-cols-2 gap-2">
         <Image
-          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path}`}
+          src={
+            movie.backdrop_path || movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path || movie.poster_path}`
+              : "/noimage.svg" // replace with the actual path to your placeholder image
+          }
           width={500}
           height={300}
           style={{

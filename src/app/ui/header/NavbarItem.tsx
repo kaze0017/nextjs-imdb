@@ -19,13 +19,21 @@ export default function NavbarItem({
   function handleClick() {
     replace(`${pathname}?type=${param}`);
   }
+  console.log(!urlSeachParams.get("type"));
 
   return (
     <button
-      className={clsx("hover:text-amber-600", {
-        "underline underline-offset-8 decoration-4 decoration-amber-500 rounded-lg":
-          urlSeachParams.get("type") === param,
-      })}
+      className={clsx(
+        "hover:text-amber-600",
+        {
+          "underline underline-offset-8 decoration-4 decoration-amber-500 rounded-lg":
+            urlSeachParams.get("type") === param,
+        },
+        {
+          "underline underline-offset-8 decoration-4 decoration-amber-500 rounded-lg":
+            !urlSeachParams.get("type") && param === "trending",
+        },
+      )}
       onClick={handleClick}
     >
       {title}
