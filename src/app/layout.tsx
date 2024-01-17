@@ -24,6 +24,7 @@ export default function RootLayout({
           <Header />
           {/* Navbar */}
           {/* Search Box */}
+          
           {children}
         </Providers>
       </body>

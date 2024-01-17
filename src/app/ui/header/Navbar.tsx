@@ -15,6 +15,7 @@ export default function Navbar() {
       param: "top_rated",
     },
   ];
+
   return (
     <div className="bg-gray-100 dark:bg-gray-800    py-6">
       <div className="max-w-6xl mx-auto">

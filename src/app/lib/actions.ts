@@ -1,24 +1,25 @@
+"use server";
+
 const API_KEY = process.env.API_KEY;
 const API_URL = process.env.API_URL;
-
 export async function getMovies({
   genre,
 }: {
-  genre: "trending" | "top_rated";
+  genre: "trending" | "top_rated" | undefined;
 }) {
-  //   throw new Error("Failed to Delete Invoice");
-
-  let url;
+  let api_url;
   genre === "trending"
-    ? (url =
+    ? (api_url =
         API_URL + "/trending/all/week?api_key=" + API_KEY + "&language=en-US")
-    : (url =
+    : (api_url =
         API_URL + "/movie/top_rated?api_key=" + API_KEY + "&language=en-US");
   try {
-    const response = await fetch(url, {
+    const response = await fetch(api_url, {
       next: { revalidate: 10000 },
     });
-    return response.json();
+    const data = await response.json();
+    const list = data.results;
+    return list;
   } catch (error) {
     throw new Error("Failed to Delete Invoice");
   }
