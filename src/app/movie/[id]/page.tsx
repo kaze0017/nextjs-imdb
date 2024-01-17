@@ -38,15 +38,15 @@ export default async function page({ params }: { params?: { id?: string } }) {
           </p>
           <p className="mb-3">
             <span className="font-semibold mr-1">Date Released:</span>
-            {movie.release_date || movie.first_air_date || "No date available"}
+            {movie.release_date || movie.first_air_date || "Not available"}
           </p>
           <p className="mb-3">
             <span className="font-semibold mr-1">Rating:</span>
-            {`${movie.vote_average.toFixed(1)}/10` || "No date available"}
+            {`${movie.vote_average.toFixed(1)}/10` || "Not available"}
           </p>
           <p className="mb-3">
             <span className="font-semibold mr-1">Vote Count:</span>
-            {movie.vote_count || "No date available"}
+            {movie.vote_count || "Not available"}
           </p>
         </div>
       </div>
