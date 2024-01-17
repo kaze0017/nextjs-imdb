@@ -32,12 +32,12 @@ export default function Card({
             height={250}
             style={{
               maxWidth: "100%",
-              height: "auto",
-              maxHeight: "250px",
+              // height: "auto",
+              // maxHeight: "250px",
               objectPosition: "center",
             }}
             alt={movie.title}
-            className="sm:rounded-t-lg group-hover:opacity-80 transition-opacity duration-200"
+            className="sm:rounded-t-lg group-hover:opacity-80 transition-opacity duration-200 h-40"
             placeholder="blur"
             loading="lazy"
             blurDataURL="/rolling.svg"
