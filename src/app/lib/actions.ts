@@ -24,3 +24,14 @@ export async function getMovies({
     throw new Error("Failed to Delete Invoice");
   }
 }
+
+export async function getMovie({ id }: { id: string }) {
+  const api_url = API_URL + "/movie/" + id + "?api_key=" + API_KEY;
+  try {
+    const response = await fetch(api_url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error("Failed to Delete Invoice");
+  }
+}
